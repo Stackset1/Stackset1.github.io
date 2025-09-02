@@ -1,4 +1,10 @@
 RewriteEngine On
+
+# Redirect requests without .html to the actual .html file in pages/
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}\.html -f
-RewriteRule ^(.*)$ $1.html [NC,L]
+RewriteRule ^([^/]+)/?$ /pages/$1.html [L]
+
+# (valgfritt) Omdirigere gamle .html-URLer til nye uten .html (søkemotorvennlig)
+RewriteCond %{THE_REQUEST} \s/pages/([^.]+)\.html [NC]
+RewriteRule ^pages/([^.]+)\.html$ /$1 [R=301,L]
