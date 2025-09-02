@@ -3,5 +3,6 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/uxethegx/public_html/
     - /bin/cp index.html $DEPLOYPATH
-    - /bin/cp index.css $DEPLOYPATH
-    - /bin/cp about.html $DEPLOYPATH
+    - /bin/cp -r pages/* $DEPLOYPATH
+    - /bin/cp -r css/* $DEPLOYPATH
+    - /bin/cp -r images/* $DEPLOYPATH
